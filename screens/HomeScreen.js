@@ -1,46 +1,34 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native-web";
+import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Switch } from "react-native-web";
 import { useNavigation } from "@react-navigation/native";
+import MyKeyboard from "../src/components/MyKeyboard";
+import { ThemeContext } from "../src/context/ThemeContext";
+import { myColors } from "../src/styles/Colors";
+import { useState } from "react";
 
 const HomeScreens = () => {
-
+    const [theme, setTheme] = useState('light');
     const navigation = useNavigation();
     return (
-        <View>
-            <Text
-            style = {{
-                fontSize: 30,
-                textAlign: "center",
-                marginTop: "20%"
-            }}
-            >Home Screen</Text>
-
-            <TouchableOpacity
-            onPress={() => navigation.navigate("Stack")}
-                style={{
-                    backgroundColor: "blue",
-                    padding: 20,
-                    marginTop: "30%",
-                    width: "50%",
-                    alignSelf: "center",
-                    borderRadius: 10
-
-                }}
-            >
-                <Text
-                    style={{
-                        fontSize: 22,
-                        textAlign: "center",
-                        color: "white",
-                        
-                    }}
-                >
-                    Ir a los Stack Screens
-                </Text>
-
-            </TouchableOpacity>
-        </View>
+        <ThemeContext.Provider value={theme}>
+        <SafeAreaView style={theme === 'light' ? styles.container : [styles.container, {backgroundColor: 'black'}]}>
+          <Switch
+            value={theme === 'dark'}
+            onValueChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+          />
+          <MyKeyboard />
+        </SafeAreaView>
+      </ThemeContext.Provider>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: myColors.light,
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+    },
+  });
 
 export default HomeScreens;

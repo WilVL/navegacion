@@ -9,6 +9,7 @@ import HomeScreens from "./screens/HomeScreen";
 import SettingScreens from "./screens/SettingsScreens";
 import StackScreens from "./screens/StackScreens";
 
+import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 const Tab = createBottomTabNavigator();
 const HomeStackNavigator = createNativeStackNavigator();
@@ -19,7 +20,7 @@ function MyStacks() {
             initialRouteName="HomeScreens"
         >
            <HomeStackNavigator.Screen
-                name="HomeScreens"
+                name="Calculadora"
                 component={HomeScreens}
            
            />
@@ -47,9 +48,9 @@ function MyTabs() {
             name="Home" 
             component={MyStacks}
             options={{
-                tabBarLabel: 'Para ti',
+                tabBarLabel: 'Calculadora',
                 tabBarIcon: ({color, size}) => (
-                    <MaterialCommunityIcons name="home-variant" size={30} color={color} />
+                    <AntDesign name="calculator" size={30} color="black" />
                 ),
                 tabBarBadge: 13,
                headerShown: false,
@@ -59,9 +60,9 @@ function MyTabs() {
             name="Settings" 
             component={SettingScreens}
             options={{
-                tabBarLabel: 'Perfil',
+                tabBarLabel: 'Chat',
                 tabBarIcon: ({color, size}) => (
-                    <MaterialCommunityIcons name="account-tie" size={30} color={color} />
+                    <AntDesign name="wechat" size={30} color="black" />
                 ),
                 tabBarBadge: 23,
                 headerShown: false,
