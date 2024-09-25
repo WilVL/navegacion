@@ -1,7 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native-web";
+import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Switch } from "react-native-web";
+import MyChat from "../src/components/MyChat";
+import { ThemeContext } from "../src/context/ThemeContext";
+import { myColors } from "../src/styles/Colors";
+import { useState } from 'react';
 
 const StackScreens = () => {
+    const [theme, setTheme] = useState('light');
+
     return (
         <View>
             <Text
